@@ -4,18 +4,16 @@ import { useDark, useToggle } from '@colid/core'
 
 const App: Component = () => {
   const { isDark, setIsDark } = useDark()
-  const { value, toggle } = useToggle(isDark, {
-    upstreamSetter: setIsDark,
-  })
+  const toggle = useToggle([isDark, setIsDark])
   createEffect(() => {
     // eslint-disable-next-line no-console
     console.log('isDark', isDark())
-    // eslint-disable-next-line no-console
-    console.log('isDarkValue', value())
+
+    // console.log('isDarkValue', value())
   })
 
   const onclick = () => {
-    toggle()
+    console.log(toggle())
   }
 
   return (
